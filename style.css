@@ -1,0 +1,553 @@
+
+/* ========================================
+   1. PALETTE E STILI GENERALI
+======================================== */
+
+:root {
+    --color-bg: #F1F0EB;
+    --color-surface: #FFFFFF;
+    --color-surface-light: #DDE2EF;
+    --color-primary: #2548D8;
+    --color-primary-hover: #1936A8;
+    --color-secondary: #E8C65A;
+    --color-text: #20232B;
+    --color-muted: #444957;
+    --color-border: #A8B1C4;
+    --color-success: #17633C;
+    --color-error: #A32632;
+    --color-focus: #2548D8;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    font: 1rem/1.6 Arial, Helvetica, sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+}
+
+h1, h2, h3, h4, p {
+    margin-top: 0;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+}
+
+a {
+    color: var(--color-primary);
+    text-underline-offset: 4px;
+}
+
+a:hover {
+    color: var(--color-primary-hover);
+}
+
+button, input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ========================================
+   2. HEADER E NAVIGAZIONE
+======================================== */
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--color-text);
+    color: #FFFFFF;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+}
+
+.navigation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+}
+
+.header a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.header a:hover {
+    color: var(--color-secondary);
+}
+
+.header a:focus-visible {
+    outline-color: var(--color-secondary);
+}
+
+
+/* ========================================
+   3. CONTENUTO E HERO
+======================================== */
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem 1.25rem 4rem;
+}
+
+main > section {
+    margin-bottom: 4rem;
+}
+
+main > section > h2 {
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.65rem, 4vw, 2.25rem);
+}
+
+.hero {
+    padding: 2.5rem 1.5rem;
+    background: var(--color-surface-light);
+    border-left: 6px solid var(--color-primary);
+    border-radius: 0 12px 12px 0;
+}
+
+.hero h2 {
+    max-width: 750px;
+    margin-bottom: 1rem;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 800;
+    letter-spacing: -0.055em;
+}
+
+.hero p {
+    max-width: 650px;
+    color: var(--color-muted);
+    font-size: 1.05rem;
+}
+
+
+/* ========================================
+   4. SEZIONI E CARD
+======================================== */
+
+.characters-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+.characters-section > h2 {
+    margin-bottom: 0;
+}
+
+#characters-status {
+    margin: 1rem 0;
+    color: var(--color-muted);
+    font-weight: 500;
+}
+
+#characters-container {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+}
+
+.character-card {
+    min-width: 0;
+    padding: 1.5rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-top: 4px solid var(--color-primary);
+    border-radius: 8px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.character-card:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 6px 20px rgba(32, 35, 43, 0.08);
+}
+
+.character-card h3 {
+    margin-bottom: 1.25rem;
+    font-size: 1.35rem;
+    font-weight: 800;
+}
+
+.character-card p {
+    margin-bottom: 0.5rem;
+    color: var(--color-muted);
+}
+
+.character-card p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ========================================
+   5. FORMULARI
+======================================== */
+
+.create-character-section,
+.edit-character-section,
+
+.create-character-section {
+    margin-bottom: 0;
+}
+
+.edit-character-section {
+    margin-top: 2rem;
+}
+
+.create-character-section h3,
+.edit-character-section h4 {
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+}
+
+#create-character-form,
+#edit-character-form {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.25rem;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    min-width: 0;
+}
+
+.form-field label {
+    font-weight: 700;
+}
+
+.form-field input {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.75rem 0.85rem;
+    background: #FFFFFF;
+    color: var(--color-text);
+    border: 1px solid #747D91;
+    border-radius: 6px;
+}
+
+.form-field input:hover {
+    border-color: var(--color-primary);
+}
+
+.form-field input:invalid:not(:placeholder-shown) {
+    border-color: var(--color-text);
+}
+
+#form-status,
+#edit-status {
+    min-height: 1.5rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.edit-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+
+/* ========================================
+   6. PULSANTI
+======================================== */
+
+/* Base condivisa */
+.hero a,
+#create-character-button,
+.detail-button,
+#back-to-characters,
+#save-put,
+#save-patch,
+#delete-character-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+    font: inherit;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+/* Pulsanti principali */
+.hero a,
+#create-character-button,
+.detail-button,
+#save-put {
+    background: var(--color-primary);
+    color: #FFFFFF;
+}
+
+.hero a:hover,
+#create-character-button:hover:not(:disabled),
+.detail-button:hover,
+#save-put:hover:not(:disabled) {
+    background: var(--color-primary-hover);
+    color: #FFFFFF;
+}
+
+/* Pulsanti secondari */
+#back-to-characters,
+#save-patch {
+    background: #FFFFFF;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+#back-to-characters:hover,
+#save-patch:hover:not(:disabled) {
+    background: var(--color-surface-light);
+}
+
+/* Pulsante eliminazione */
+#delete-character-button {
+    background: var(--color-error);
+    color: #FFFFFF;
+}
+
+#delete-character-button:hover:not(:disabled) {
+    background: #821E28;
+}
+
+/* Spaziatura pulsanti */
+.hero a,
+.detail-button {
+    margin-top: 1rem;
+}
+
+#back-to-characters {
+    margin-top: 2rem;
+}
+
+#create-character-button {
+    width: 100%;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+
+/* ========================================
+   7. DETTAGLI ED ELIMINAZIONE
+======================================== */
+
+.character-detail {
+    width: 100%;
+    max-width: 750px;
+    margin: 1rem auto 2rem;
+    padding-top: 1.5rem;
+}
+
+.character-detail > h3 {
+    margin-bottom: 1.75rem;
+    font-size: 1.75rem;
+    line-height: 1.3;
+}
+
+#detail-content {
+    margin-bottom: 2rem;
+}
+
+.delete-character-section {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border);
+}
+
+#delete-status {
+    margin-top: 1rem;
+    color: var(--color-error);
+    font-weight: 600;
+}
+
+#delete-status:empty {
+    display: none;
+}
+
+
+/* ========================================
+   8. FOOTER
+======================================== */
+
+footer {
+    padding: 2rem 1.5rem;
+    background: var(--color-text);
+    color: #FFFFFF;
+    text-align: center;
+    border-top: 4px solid var(--color-secondary);
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+
+/* ========================================
+   9. RESPONSIVE
+======================================== */
+
+@media (min-width: 600px) {
+    .header {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 2rem;
+    }
+
+    main {
+        padding: 3rem 2rem 5rem;
+    }
+
+    .hero {
+        padding: 3.5rem 2.5rem;
+    }
+
+    #create-character-form,
+    #edit-character-form,
+    #characters-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #create-character-button,
+    #form-status,
+    .edit-actions,
+    #edit-status {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (min-width: 900px) {
+    .header {
+        padding: 1.5rem 4rem;
+    }
+
+    .hero {
+        padding: 4rem;
+    }
+
+    .create-character-section {
+        padding: 2rem;
+    }
+
+    #characters-container {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 599px) {
+    .detail-button,
+    #back-to-characters {
+        width: 100%;
+    }
+}
+
+
+/* ========================================
+   10. ACCESSIBILITÀ
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* ========================================
+   ACCESSO A SWAGGER UI
+======================================== */
+
+.swagger-access {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.swagger-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.75rem 1.25rem;
+
+    background: var(--color-primary);
+    color: #FFFFFF;
+    border-radius: 6px;
+
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.swagger-button:hover {
+    background: var(--color-primary-hover);
+    color: #FFFFFF;
+}
+
+.swagger-description {
+    flex: 1 1 240px;
+    max-width: 420px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 599px) {
+    .swagger-button {
+        width: 100%;
+    }
+}

@@ -1,0 +1,213 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gestión de personajes de Naruto mediante una API REST.">
+
+    <title>Naruto API | Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="logo">
+            <h1>Naruto API</h1>
+        </div>
+
+        <nav class="navigation" aria-label="Navegación principal">
+            <a href="#inicio">Inicio</a>
+            <a href="#personajes">Personajes</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- INICIO Y ACCESO A SWAGGER -->
+        <section id="inicio" class="hero" aria-labelledby="hero-title">
+            <h2 id="hero-title">Bienvenido a Naruto API</h2>
+
+            <p>
+                Esta es mi API REST para consultar y gestionar información
+                de los personajes del universo Naruto, puedes añadir o borrar todos los personajes que quieres!
+            </p>
+
+            <div class="swagger-access">
+                <a
+                    href="http://127.0.0.1:8000/docs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="swagger-button"
+                >
+                    Consultar documentación API
+                </a>
+
+                <p class="swagger-description">
+                    Explora los endpoints! Prueba las operaciones CRUD
+                    directamente desde Swagger UI.
+                </p>
+            </div>
+        </section>
+
+        <!-- GESTIÓN DE PERSONAJES -->
+        <section id="personajes" class="characters-section">
+            <h2 id="characters-title">Personajes</h2>
+
+            <!-- CREAR PERSONAJE -->
+            <section class="create-character-section" aria-labelledby="create-title">
+                <h3 id="create-title">Añadir personaje</h3>
+
+                <form id="create-character-form">
+
+                    <div class="form-field">
+                        <label for="character-name">Nombre</label>
+                        <input type="text" id="character-name" name="name"
+                               minlength="1" maxlength="100" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="character-age">Edad</label>
+                        <input type="number" id="character-age" name="age"
+                               min="0" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="character-village">Aldea</label>
+                        <input type="text" id="character-village" name="village"
+                               maxlength="100" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="character-rank">Rango</label>
+                        <input type="text" id="character-rank" name="rank"
+                               maxlength="50" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="character-clan">Clan</label>
+                        <input type="text" id="character-clan" name="clan"
+                               maxlength="100" required>
+                    </div>
+
+                    <div class="form-field">
+                        <label for="character-chackra">Naturaleza del chakra</label>
+                        <input type="text" id="character-chackra" name="chackra_nature"
+                               maxlength="100" required>
+                    </div>
+
+                    <button type="submit" id="create-character-button">
+                        Añadir personaje
+                    </button>
+
+                    <p id="form-status" role="status" aria-live="polite"></p>
+                </form>
+            </section>
+
+            <!-- LISTA DE PERSONAJES -->
+            <p id="characters-status" role="status" aria-live="polite">
+                Preparando la lista de personajes...
+            </p>
+
+            <div id="characters-container" aria-busy="true"></div>
+
+            <!-- DETALLES DEL PERSONAJE -->
+            <section
+                id="character-detail"
+                class="character-detail"
+                aria-labelledby="detail-title"
+                hidden
+            >
+                <h3 id="detail-title" tabindex="-1">
+                    Detalles del personaje
+                </h3>
+
+                <div id="detail-content"></div>
+
+                <!-- EDITAR PERSONAJE -->
+                <section class="edit-character-section" aria-labelledby="edit-title">
+                    <h4 id="edit-title">Editar personaje</h4>
+
+                    <form id="edit-character-form">
+
+                        <div class="form-field">
+                            <label for="edit-name">Nombre</label>
+                            <input type="text" id="edit-name" name="name"
+                                   minlength="1" maxlength="100" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="edit-age">Edad</label>
+                            <input type="number" id="edit-age" name="age"
+                                   min="0" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="edit-village">Aldea</label>
+                            <input type="text" id="edit-village" name="village"
+                                   minlength="1" maxlength="100" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="edit-rank">Rango</label>
+                            <input type="text" id="edit-rank" name="rank"
+                                   minlength="1" maxlength="50" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="edit-clan">Clan</label>
+                            <input type="text" id="edit-clan" name="clan"
+                                   minlength="1" maxlength="100" required>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="edit-chackra">Naturaleza del chakra</label>
+                            <input type="text" id="edit-chackra" name="chackra_nature"
+                                   minlength="1" maxlength="100" required>
+                        </div>
+
+                        <div class="edit-actions">
+                            <button type="button" id="save-put">
+                                Guardar todos los datos (PUT)
+                            </button>
+
+                            <button type="button" id="save-patch">
+                                Guardar cambios (PATCH)
+                            </button>
+                        </div>
+
+                        <p id="edit-status" role="status" aria-live="polite"></p>
+                    </form>
+                </section>
+
+                <!-- ELIMINAR PERSONAJE -->
+                <div class="delete-character-section">
+                    <button type="button" id="delete-character-button">
+                        Eliminar personaje
+                    </button>
+
+                    <p id="delete-status" role="status" aria-live="polite"></p>
+                </div>
+
+                <!-- VOLVER A LA LISTA -->
+                <button type="button" id="back-to-characters">
+                    Volver a personajes
+                </button>
+            </section>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>Naruto API - Proyecto de gestión de personajes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

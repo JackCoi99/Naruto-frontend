@@ -1,0 +1,18 @@
+
+# Dependencias
+node_modules/
+
+# Variables de entorno
+.env
+.env.*
+
+# Editores
+.vscode/
+.idea/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.log
