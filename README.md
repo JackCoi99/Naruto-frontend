@@ -50,7 +50,7 @@ naruto-frontend/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/naruto-frontend.git
+git clone https://github.com/JackCoi99/naruto-frontend.git
 cd naruto-frontend
 ```
 
@@ -142,7 +142,7 @@ La API REST está desarrollada con Python, FastAPI, SQLAlchemy y SQLite.
 
 Repositorio del backend:
 
-`https://github.com/TU_USUARIO/naruto-backend`
+`https://github.com/JackCoi99/naruto-backend`
 
 Documentación interactiva del backend en ejecución:
 
